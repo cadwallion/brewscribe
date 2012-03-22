@@ -15,6 +15,7 @@ Gem::Specification.new do |gem|
   gem.version       = Brewscribe::VERSION
 
   gem.add_development_dependency 'rspec'
+  gem.add_development_dependency 'guard'
+  gem.add_development_dependency 'guard-rspec'
   gem.add_dependency 'nokogiri'
-  gem.add_dependency 'multi_xml'
 end

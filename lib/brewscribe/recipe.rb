@@ -1,31 +1,42 @@
-require 'ostruct'
 require 'nokogiri'
 
 module Brewscribe
   class Recipe
-
     attr_reader :raw_data, :hash
+
     def initialize raw_data
       @raw_data = raw_data
 
       parse_raw_data  
+      create_recipe_accessors
     end
 
     def parse_raw_data
       @xml = Nokogiri::XML(@raw_data).xpath('/Selections/Data/Recipe') 
       @hash = xml_node_to_hash(@xml.first)
+    end
 
-      @hash.keys.each do |key|
+    def create_recipe_accessors
+       @hash.keys.each do |key|
         self.class.module_eval do
           attr_accessor key
         end
 
         self.send "#{key}=", @hash[key]
-      end
+      end     
     end
 
     def clean_key key
-      key.to_s.match(/(F_(\w{1,2}_)?)?(_MOD_|.+)/)[3].downcase
+      extracted = key.to_s.match(/(F_(\w{1,2}_)?)?(_MOD_|.+)/)[3]
+      if extracted == '_MOD_' 
+        return 'last_modified'
+      else
+        extracted.downcase
+      end
+    end
+
+    def parse_ingredients
+      self.ingredients = IngredientList.from_data(self.ingredients[:data])
     end
 
     def xml_node_to_hash node
