@@ -7,13 +7,15 @@ module Brewscribe
     def initialize raw_data
       @raw_data = raw_data
 
-      parse_raw_data  
-      create_recipe_accessors
+      parse_raw_data
     end
 
     def parse_raw_data
       @xml = Nokogiri::XML(@raw_data).xpath('/Selections/Data/Recipe') 
       @hash = xml_node_to_hash(@xml.first)
+
+      create_recipe_accessors
+      parse_ingredients
     end
 
     def create_recipe_accessors

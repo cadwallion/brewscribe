@@ -35,6 +35,7 @@ describe Brewscribe::Recipe do
 
   describe '#parse_ingredients' do
     it 'should create a Brewscribe::IngredientList object' do
+      subject.ingredients = subject.hash[:ingredients]
       subject.parse_ingredients
       subject.ingredients.should be_a Brewscribe::IngredientList
     end

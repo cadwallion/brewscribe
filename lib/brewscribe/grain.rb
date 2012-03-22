@@ -1,3 +1,5 @@
+require 'brewscribe/conversion'
+
 module Brewscribe
   class Grain
     attr_accessor :name, :origin, :amount, :color, :yield, :percent, :price,
@@ -5,9 +7,7 @@ module Brewscribe
       :max_in_batch, :ibu_gal_per_lb, :protein, :diastatic_power, :late_extract,
       :convert_grain, :moisture, :coarse_fine_diff, :convert_grain, :supplier
 
-    BOOLEAN_CONV = ->(k) { k == '1' }
-    FLOAT_CONV = ->(k) { k.to_f }
-    PERCENT_CONV = ->(k) { k.to_f * 0.001 }
+    include Brewscribe::Conversion
 
     TYPES = ['Grain', 'Extract Sugar', 'Adjunct', 'Dry Extract']
 

@@ -4,9 +4,8 @@ describe Brewscribe do
   let(:recipe_file) { File.open(File.dirname(__FILE__) + '/support/recipe.bsmx', 'r') }
 
   describe '#import' do
-    before :each do
+    before do
       Brewscribe::Recipe.any_instance.stub(:parse_raw_data)
-      Brewscribe::Recipe.any_instance.stub(:create_recipe_accessors)
     end
 
     it 'should call #read on the passed IO object' do
