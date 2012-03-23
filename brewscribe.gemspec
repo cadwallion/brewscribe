@@ -4,7 +4,7 @@ require File.expand_path('../lib/brewscribe/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Andrew Nordman"]
   gem.email         = ["cadwallion@gmail.com"]
-  gem.description   = %q{Beersmith file reader}
+  gem.summary       = %q{A Beersmith (.bsmx) file parser}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)
