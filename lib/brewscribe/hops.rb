@@ -1,6 +1,6 @@
 module Brewscribe
   class Hops
-    attr_accessor :name, :origin, :alpha, :beta, :notes, :boil_time, :percent,
+    attr_reader :name, :origin, :alpha, :beta, :notes, :boil_time, :percent,
       :amount, :hsi, :dry_hop_time, :ibu_contrib, :use, :in_recipe, :price,
       :type, :form
 
@@ -28,19 +28,7 @@ module Brewscribe
 
     def initialize data
       @original_data = data   
-      parse_data
-    end
-
-    def parse_data
-      @original_data.each_key do |key|
-        if KEY_CONVERSION.has_key? key
-          value = KEY_CONVERSION[key].call(@original_data[key])
-        else
-          value = @original_data[key]
-        end
-         
-        self.instance_variable_set "@#{key}".to_sym, value
-      end
+      data_to_properties data
     end
   end
 end

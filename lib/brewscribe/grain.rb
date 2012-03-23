@@ -2,7 +2,7 @@ require 'brewscribe/conversion'
 
 module Brewscribe
   class Grain
-    attr_accessor :name, :origin, :amount, :color, :yield, :percent, :price,
+    attr_reader :name, :origin, :amount, :color, :yield, :percent, :price,
       :recommend_mash, :in_recipe, :type, :add_after_boil, :notes, :boil_time,
       :max_in_batch, :ibu_gal_per_lb, :protein, :diastatic_power, :late_extract,
       :convert_grain, :moisture, :coarse_fine_diff, :convert_grain, :supplier
@@ -16,7 +16,7 @@ module Brewscribe
       color: FLOAT_CONV,
       yield: PERCENT_CONV,
       price: FLOAT_CONV,
-      boil_time: FLOAT_CONV,
+      boil_time: ->(k) { k.to_i },
       percent: PERCENT_CONV,
       max_in_batch: PERCENT_CONV,
       add_after_boil: BOOLEAN_CONV,
@@ -34,19 +34,7 @@ module Brewscribe
     def initialize grain_data
       @original_data = grain_data 
 
-      parse_data
-    end
-
-    def parse_data
-      @original_data.each_key do |key|
-        if KEY_CONVERSION.has_key? key
-          value = KEY_CONVERSION[key].call(@original_data[key])
-        else
-          value = @original_data[key]
-        end
-         
-        self.instance_variable_set "@#{key}".to_sym, value
-      end
+      data_to_properties grain_data
     end
   end
 end

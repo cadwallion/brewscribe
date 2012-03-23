@@ -21,7 +21,7 @@ describe Brewscribe::Grain do
       subject.name.should == data[:name] 
     end
 
-    it { subject.boil_time.should be_a Float }
+    it { subject.boil_time.should be_a Fixnum }
     it { subject.percent.should be_a Float }
     it { subject.max_in_batch.should be_a Float }
     it { subject.amount.should be_a Float }

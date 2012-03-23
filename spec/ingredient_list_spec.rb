@@ -9,8 +9,8 @@ describe Brewscribe::IngredientList do
       subject.grains[0].should be_a Brewscribe::Grain
     end
 
-    it 'should set the yeast to an empty array' do
-      subject.yeast.should be_a Array
+    it 'should set the yeasts to an empty array' do
+      subject.yeasts.should be_a Array
     end
 
     it 'should set the hops to an empty array of Hops' do
@@ -36,6 +36,16 @@ describe Brewscribe::IngredientList do
       subject.add_hops hop_data
       subject.hops[0].should be_a Brewscribe::Hops
       subject.hops[0].name.should == 'Williamette'
+    end
+  end
+
+  describe '#add_yeast' do
+    let(:yeast_data) { { name: 'Nottingham' } }
+
+    it 'should add a Brewscribe::Yeast object to yeasts' do
+      subject.add_yeast yeast_data
+      subject.yeasts[0].should be_a Brewscribe::Yeast
+      subject.yeasts[0].name.should == 'Nottingham'
     end
   end
 end
