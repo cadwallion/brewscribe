@@ -1,4 +1,5 @@
 require 'brewscribe/grain'
+require 'brewscribe/hops'
 
 module Brewscribe
   class IngredientList
@@ -8,6 +9,12 @@ module Brewscribe
       if data[:grain]
         data[:grain].each do |grain|
           list.add_grain grain
+        end
+      end
+
+      if data[:hops]
+        data[:hops].each do |hops|
+          list.add_hops hops
         end
       end
       list
@@ -21,6 +28,10 @@ module Brewscribe
 
     def add_grain grain_data
       @grains << Grain.new(grain_data)
+    end
+
+    def add_hops hop_data
+      @hops << Hops.new(hop_data)
     end
   end
 end
