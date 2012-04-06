@@ -6,8 +6,6 @@ describe Brewscribe::Document do
 
   describe '#parse' do
     it 'should add a Recipe to recipes when a Recipe entry is found' do
-      subject.recipes.should have(0).recipes
-      hash = subject.parse 
       subject.recipes.should have(1).recipe
       subject.recipes[0].should be_a Brewscribe::Recipe
     end

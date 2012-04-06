@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Brewscribe::Recipe do
   let(:recipe_file) { File.read(File.dirname(__FILE__) + '/support/recipe.bsmx') }
-  let(:data) { Brewscribe::Document.new(data: recipe_file).parse.hash[:recipe] }
+  let(:data) { Brewscribe::Document.new(data: recipe_file).hash[:recipe] }
   subject { Brewscribe::Recipe.new(data) }
   it 'should convert the recipe data into properties' do
     subject.brewer.should == 'CadBrew'

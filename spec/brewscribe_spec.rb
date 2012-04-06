@@ -8,16 +8,8 @@ describe Brewscribe do
       Brewscribe::Recipe.any_instance.stub(:parse_raw_data)
     end
 
-    it 'should call #read on the passed IO object' do
-      file = double()
-      file.should_receive(:read)
-      Brewscribe.import(file)
-    end
-
     it 'should return a Document object' do
-      file = double()
-      file.stub(:read)
-      recipe = Brewscribe.import(file)
+      recipe = Brewscribe.import(recipe_file)
       recipe.should be_a(Brewscribe::Document)
     end
   end
