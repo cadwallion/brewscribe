@@ -14,11 +14,11 @@ describe Brewscribe do
       Brewscribe.import(file)
     end
 
-    it 'should return a Recipe object' do
+    it 'should return a Document object' do
       file = double()
       file.stub(:read)
       recipe = Brewscribe.import(file)
-      recipe.should be_a(Brewscribe::Recipe)
+      recipe.should be_a(Brewscribe::Document)
     end
   end
 end

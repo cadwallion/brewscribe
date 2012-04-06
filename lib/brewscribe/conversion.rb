@@ -1,3 +1,4 @@
+require 'date'
 module Brewscribe
   module Conversion
     BOOLEAN_CONV = ->(k) { k == '1' }

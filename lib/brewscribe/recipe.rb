@@ -3,74 +3,22 @@ require 'nokogiri'
 module Brewscribe
   class Recipe
     attr_reader :raw_data, :hash
+    attr_accessor :age, :asst_brewer, :base_grain, :boil_vol_measured, :brewer, 
+      :carb, :carb_vols, :color_adj_string, :date, :description, :desired_color, 
+      :desired_ibu, :desired_og, :equipment, :fg_measured, :final_vol_measured,
+      :image, :image_x, :image_y, :include_starter, :ingredients, :inv_date, 
+      :last_modified, :locked, :mash, :mash_ph, :name, :notes, :og_boil_measured, 
+      :og_measured, :og_primary, :og_secondary, :old_boil_vol, :old_efficiency, 
+      :old_type, :old_vol, :rating, :raw_data, :rebalance_scale, :running_gravity,
+      :runoff_ph, :starter_size, :stir_plate, :style, :type, :version, 
+      :volume_measured
 
-    def initialize raw_data
-      @raw_data = raw_data
-
-      parse_raw_data
-    end
-
-    def parse_raw_data
-      @xml = Nokogiri::XML(@raw_data).xpath('/Selections/Data/Recipe') 
-      @hash = xml_node_to_hash(@xml.first)
-
-      create_recipe_accessors
-      parse_ingredients
-    end
-
-    def create_recipe_accessors
-       @hash.keys.each do |key|
-        self.class.module_eval do
-          attr_accessor key
-        end
-
-        self.send "#{key}=", @hash[key]
+    def initialize data = {}
+      data.keys.each do |key|
+        self.send "#{key}=", data[key]
       end     
-    end
 
-    def clean_key key
-      extracted = key.to_s.match(/(F_(\w{1,2}_)?)?(_MOD_|.+)/)[3]
-      if extracted == '_MOD_' 
-        return 'last_modified'
-      else
-        extracted.downcase
-      end
-    end
-
-    def parse_ingredients
-      self.ingredients = IngredientList.from_data(self.ingredients[:data])
-    end
-
-    def xml_node_to_hash node
-      if node.element?
-        if node.children.size > 0
-          result_hash = {} 
-
-          node.children.each do |child|
-            result = xml_node_to_hash child
-            property = clean_key child.name
-            key = property.to_sym
-
-            if child.name == 'text'
-              return result if !child.next && !child.previous
-            elsif result_hash[key]
-              if result_hash[key].is_a? Array
-                result_hash[key] << result
-              else
-                result_hash[key] = [result_hash[key]] << result
-              end
-            else
-              result_hash[key] = result
-            end
-          end
-
-          return result_hash
-        else
-          return nil
-        end
-      else
-        return node.content.to_s
-      end
+      self.ingredients = IngredientList.from_data self.ingredients[:data]
     end
   end
 end
