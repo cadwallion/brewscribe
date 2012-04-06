@@ -1,6 +1,7 @@
 module Brewscribe
   class Document
-    attr_reader :recipes, :raw_data, :hash
+    attr_reader :raw_data, :hash
+    attr_accessor :recipes
 
     def initialize options = {}
       @recipes = []
@@ -34,34 +35,36 @@ module Brewscribe
     end
 
     def xml_node_to_hash node
-      if node.element?
-        if node.children.size > 0
-          result_hash = {} 
+      if node
+        if node.element?
+          if node.children.size > 0
+            result_hash = {} 
 
-          node.children.each do |child|
-            result = xml_node_to_hash child
-            property = clean_key child.name
-            key = property.to_sym
+            node.children.each do |child|
+              result = xml_node_to_hash child
+              property = clean_key child.name
+              key = property.to_sym
 
-            if child.name == 'text'
-              return result if !child.next && !child.previous
-            elsif result_hash[key]
-              if result_hash[key].is_a? Array
-                result_hash[key] << result
+              if child.name == 'text'
+                return result if !child.next && !child.previous
+              elsif result_hash[key]
+                if result_hash[key].is_a? Array
+                  result_hash[key] << result
+                else
+                  result_hash[key] = [result_hash[key]] << result
+                end
               else
-                result_hash[key] = [result_hash[key]] << result
+                result_hash[key] = result
               end
-            else
-              result_hash[key] = result
             end
-          end
 
-          return result_hash
+            return result_hash
+          else
+            return nil
+          end
         else
-          return nil
+          return node.content.to_s
         end
-      else
-        return node.content.to_s
       end
     end
 

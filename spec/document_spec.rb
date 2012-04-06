@@ -4,7 +4,7 @@ describe Brewscribe::Document do
   let(:file) { File.open(File.dirname(__FILE__) + '/support/recipe.bsmx', 'r') }
   subject { Brewscribe::Document.new file: file }
 
-  describe '#parse' do
+  describe '#parse_data' do
     it 'should add a Recipe to recipes when a Recipe entry is found' do
       subject.recipes.should have(1).recipe
       subject.recipes[0].should be_a Brewscribe::Recipe
