@@ -8,9 +8,12 @@ describe Brewscribe::Recipe do
     subject.brewer.should == 'CadBrew'
   end
 
-  it 'should return a hash for nested recipe attributes' do
-    subject.equipment.should be_a Hash
-    subject.equipment[:name].should be_a String
+  it 'should convert equipment to an Equipment object' do
+    subject.equipment.should be_a Brewscribe::Equipment
+  end
+
+  it 'should convert mash into a Mash object' do
+    subject.mash.should be_a Brewscribe::Mash
   end
 
   it 'should contain an IngredientsList' do

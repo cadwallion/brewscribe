@@ -20,6 +20,7 @@ module Brewscribe
 
       self.ingredients = IngredientList.from_data self.ingredients[:data]
       self.mash = Mash.from_data self.mash
+      self.equipment = Equipment.from_data self.equipment
     end
   end
 end
