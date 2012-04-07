@@ -1,4 +1,4 @@
-# Brewscribe
+# Brewscribe [![Build Status](https://secure.travis-ci.org/cadwallion/brewscribe.png)](http://travis-ci.org/cadwallion/brewscribe)
 
 Brewscribe is a Beersmith2 (.bsmx) file parser.
 
