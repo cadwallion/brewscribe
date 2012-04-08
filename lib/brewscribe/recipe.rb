@@ -9,15 +9,52 @@ module Brewscribe
       :image, :image_x, :image_y, :include_starter, :ingredients, :inv_date, 
       :last_modified, :locked, :mash, :mash_ph, :name, :notes, :og_boil_measured, 
       :og_measured, :og_primary, :og_secondary, :old_boil_vol, :old_efficiency, 
-      :old_type, :old_vol, :rating, :raw_data, :rebalance_scale, :running_gravity,
+      :old_type, :old_vol, :rating, :rebalance_scale, :running_gravity,
       :runoff_ph, :starter_size, :stir_plate, :style, :type, :version, 
       :volume_measured
 
-    def initialize data = {}
-      data.keys.each do |key|
-        self.send "#{key}=", data[key]
-      end     
+    include Brewscribe::Conversion
 
+    TYPES = ['Extract', 'Partial Grain', 'All Grain']
+
+    KEY_CONVERSION = {
+      boil_vol_measured: FLOAT_CONV ,
+      type: ->(t) { TYPES[t.to_i] },
+      carb_vols: FLOAT_CONV,
+      date: DATE_CONV,
+      desired_ibu: FLOAT_CONV,
+      desired_color: FLOAT_CONV,
+      desired_og: FLOAT_CONV,
+      fg_measured: FLOAT_CONV,
+      final_vol_measured: FLOAT_CONV,
+      include_starter: BOOLEAN_CONV,
+      inv_date: DATE_CONV,
+      last_modified: DATE_CONV,
+      locked: BOOLEAN_CONV,
+      mash_ph: FLOAT_CONV,
+      og_boil_measured: FLOAT_CONV,
+      og_measured: FLOAT_CONV,
+      og_primary: FLOAT_CONV,
+      og_secondary: FLOAT_CONV,
+      old_boil_vol: FLOAT_CONV,
+      old_efficiency: PERCENT_CONV,
+      rating: FLOAT_CONV,
+      rebalance_scale: BOOLEAN_CONV,
+      running_gravity: FLOAT_CONV,
+      runoff_ph: FLOAT_CONV,
+      starter_size: FLOAT_CONV,
+      stir_plate: BOOLEAN_CONV,
+      version: FLOAT_CONV,
+      volume_measured: FLOAT_CONV
+    }
+
+
+    def initialize data = {}
+      data_to_properties data
+
+      # @TODO: Base Grain conversion
+      # @TODO: Carb conversion
+      # @TODO: Style conversion
       self.ingredients = IngredientList.from_data self.ingredients[:data]
       self.mash = Mash.from_data self.mash
       self.equipment = Equipment.from_data self.equipment
