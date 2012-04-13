@@ -56,5 +56,13 @@ RECIPE_HASH = {
     :tun_vol=>"512.0000000", 
     :tun_mass=>"64.0000000", 
     :tun_hc=>"0.1200000"
-  }    
+  },
+  :carb => {
+    :last_modified=>"1978-12-30",
+    :name=>"Corn Sugar",
+    :temperature=>"70.0000000",
+    :type=>"0", :primer_name=>"Corn Sugar",
+    :carb_rate=>"100.0000000",
+    :notes=>"Use corn sugar for priming the beer"
+  }
 }
