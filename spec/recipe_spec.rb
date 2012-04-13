@@ -16,6 +16,11 @@ describe Brewscribe::Recipe do
     subject.mash.should be_a Brewscribe::Mash
   end
 
+  it 'should convert carb into a Carbonation object' do
+    subject.carb.should be_a Brewscribe::Carbonation
+    subject.carbonation.should be_a Brewscribe::Carbonation
+  end
+
   it 'should contain an IngredientsList' do
     subject.ingredients.should be_a Brewscribe::IngredientList
   end
