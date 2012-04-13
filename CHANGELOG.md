@@ -1,3 +1,12 @@
+## 0.2.0, released 2012-04-13
+
+* Added Brewscribe::Mash
+* Added Brewscribe::Carbonation
+* Added Brewscribe::Equipment
+* Added Brewscribe::Style
+* Brewscribe::Recipe now follows the type conversion system
+* Brewscribe::Document now parses Style listings
+
 ## 0.1.0, released 2012-04-05
 
 * Added Brewscribe::Document to represent .bsmx file
