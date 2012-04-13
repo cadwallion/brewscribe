@@ -8,6 +8,7 @@ describe Brewscribe::Carbonation do
 
     it { subject.carb_rate.should be_a Float }
     it { subject.temperature.should be_a Float }
+    it { subject.last_modified.should be_a Date }
 
 
     it 'should set the type to one of the TYPES' do
