@@ -1,10 +1,11 @@
 module Brewscribe
   class Document
     attr_reader :raw_data, :hash
-    attr_accessor :recipes
+    attr_accessor :recipes, :styles
 
     def initialize options = {}
       @recipes = []
+      @styles = []
 
       if options[:file]
         @raw_data = File.read options[:file]
@@ -25,12 +26,24 @@ module Brewscribe
         parse_recipes Array @hash[:recipe]
       end
 
+      if @hash[:style].class == Hash
+        parse_styles[@hash[:style]]
+      else
+        parse_styles Array @hash[:style]
+      end
+
       self
     end
 
     def parse_recipes recipes
       recipes.each do |recipe_hash|
         @recipes << Recipe.new(recipe_hash)
+      end
+    end
+
+    def parse_styles styles
+      styles.each do |style_hash|
+        @styles << Style.from_data(style_hash)
       end
     end
 
