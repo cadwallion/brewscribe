@@ -6,6 +6,7 @@ require 'brewscribe/ingredient_list'
 require 'brewscribe/mash'
 require 'brewscribe/equipment'
 require 'brewscribe/carbonation'
+require 'brewscribe/style'
 
 module Brewscribe
   def self.import file

@@ -16,6 +16,10 @@ describe Brewscribe::Recipe do
     subject.mash.should be_a Brewscribe::Mash
   end
 
+  it 'should convert style into a Style object' do
+    subject.style.should be_a Brewscribe::Style
+  end
+
   it 'should convert carb into a Carbonation object' do
     subject.carb.should be_a Brewscribe::Carbonation
     subject.carbonation.should be_a Brewscribe::Carbonation

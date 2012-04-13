@@ -55,11 +55,11 @@ module Brewscribe
       data_to_properties data
 
       # @TODO: Base Grain conversion
-      # @TODO: Style conversion
       self.ingredients = IngredientList.from_data self.ingredients[:data]
       self.mash = Mash.from_data self.mash
       self.equipment = Equipment.from_data self.equipment
       self.carb = Carbonation.from_data self.carb
+      self.style = Style.from_data self.style
     end
   end
 end

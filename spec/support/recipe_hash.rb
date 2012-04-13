@@ -64,5 +64,35 @@ RECIPE_HASH = {
     :type=>"0", :primer_name=>"Corn Sugar",
     :carb_rate=>"100.0000000",
     :notes=>"Use corn sugar for priming the beer"
-  }
+  },
+  :style => {
+    :last_modified=>"2012-03-12",
+    :name=>"Imperial Stout",
+    :category=>"Stout",
+    :guide=>"BJCP 2008",
+    :letter=>"6",
+    :number=>"13",
+    :type=>"0",
+    :min_og=>"1.0750000",
+    :max_og=>"1.1150000",
+    :min_fg=>"1.0180000",
+    :max_fg=>"1.0300000",
+    :min_ibu=>"50.0000000",
+    :max_ibu=>"90.0000000",
+    :min_carb=>"1.8000000",
+    :max_carb=>"2.6000000",
+    :min_color=>"30.0000000",
+    :max_color=>"40.0000000",
+    :min_abv=>"8.0000000",
+    :max_abv=>"12.0000000",
+    :description=>"An intensely flavored, big, dark ale. Roasty, fruity, and bittersweet, with a noticeable alcohol presence. Dark fruit flavors meld with roasty, burnt, or almost tarlike sensations. Like a black barleywine with every dimension of flavor coming into play. Brewed to high gravity and hopping level in England for export to the Baltic States and Russia. Said to be popular with the Russian Imperial Court. Today is even more popular with American craft brewers, who have extended the style with unique American characteristics. Variations exist, with English and American interpretations (predictably, the American versions have more bitterness, roasted character, and finishing hops, while the English varieties
+          reflect a more complex specialty malt character and a more forward ester profile). The wide range of allowable characteristics allow for maximum brewer creativity.", 
+    :profile=>"Aroma: Rich and complex, with variable amounts of roasted grains, maltiness, fruity esters, hops, and alcohol. The roasted malt character can take on coffee, dark chocolate, or slightly burnt tones and can be light to moderately strong. The malt aroma can be subtle to rich and barleywine-like, depending on the gravity and grain bill. May optionally show a slight specialty malt character (e.g., caramel), but this should only add complexity and not dominate. Fruity esters may be low to moderately strong, and may take on a complex, dark fruit (e.g., plums, prunes, raisins) character. Hop aroma can be very low to quite aggressive, and may contain any hop variety. An alcohol character may be present, but shouldnt be sharp, hot or solventy. Aged versions may have a slight vinous or portlike quality, but shouldnt be sour. No diacetyl. The balance can vary with any of the aroma elements taking center stage. Not all possible aromas described need be present; many interpretations are possible. Aging affects the intensity, balance and smoothness of aromatics.\n          Appearance: Color may range from very dark reddish-brown to jet black. Opaque. Deep tan to dark brown head. Generally has a well-formed head, although head retention may be low to moderate. High alcohol and viscosity may be visible in legs when beer is swirled in a glass.\n
+      Flavor: Rich, deep, complex and frequently quite intense, with variable amounts of roasted malt/grains, maltiness, fruity esters, hop bitterness and flavor, and alcohol. Medium to aggressively high bitterness. Medium-low to high hop flavor (any variety). Moderate to aggressively high roasted malt/grain flavors can suggest bittersweet or unsweetened chocolate, cocoa, and/or strong coffee. A slightly burnt grain, burnt currant or tarry character may be evident. Fruity esters may be low to intense, and can take on a dark fruit character (raisins, plums, or prunes). Malt backbone can be balanced and supportive to rich and barleywine-like, and may optionally show some supporting caramel, bready or toasty flavors. Alcohol strength 
+      should be evident, but not hot, sharp, or solventy. No diacetyl. The palate and finish can vary from relatively dry to moderately sweet, usually with some lingering roastiness, hop bitterness and warming character. The balance and intensity of flavors can be affected by aging, with some flavors becoming more subdued over time and some aged, vinous or port-like qualities developing.\n
+      Mouthfeel: Full to very full-bodied and chewy, with a velvety, luscious texture (although the body may decline with long conditioning). Gentle smooth warmth from alcohol should be present and noticeable. Should not be syrupy and underattenuated. Carbonation may be low to moderate, depending on age and conditioning.", 
+    :ingredients=>"Well-modified pale malt, with generous quantities of roasted malts and/or grain. May have a complex grain bill using virtually any variety of malt. Any type of hops may be used. Alkaline water balances the abundance of acidic roasted grain in the grist. American or English ale yeast.",
+    :examples=>"Three Floyds Dark Lord, Bells Expedition Stout, North Coast Old Rasputin Imperial Stout, Stone Imperial Stout, Samuel Smith Imperial Stout, Scotch Irish Tsarina Katarina Imperial Stout, Thirsty Dog Siberian Night, Deschutes The Abyss, Great Divide Yeti, Southampton Russian Imperial Stout, Rogue Imperial Stout, Bear Republic Big Bear Black Stout, Great Lakes Blackout Stout, Avery The Czar, Founders Imperial Stout, Victory Storm King, Brooklyn Black Chocolate Stout", 
+    :web_link=>"http://www.bjcp.org"
+    }
 }
