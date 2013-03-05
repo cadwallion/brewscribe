@@ -14,7 +14,7 @@ module Brewscribe
           list.add_grain grain
         end
       when Hash
-        list.add_graind data[:grain]
+        list.add_grain data[:grain]
       end
 
       case data[:hops]
