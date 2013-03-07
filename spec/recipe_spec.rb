@@ -71,4 +71,10 @@ describe Brewscribe::Recipe do
   it 'should set stir_plate to boolean' do
     [true, false].should include subject.stir_plate
   end
+
+  context 'calculation methods' do
+    its(:og_measured) { should == 1.046 }
+    its(:fg_measured) { should == 1.010 }
+    its(:abv) { should == 4.74 }
+  end
 end

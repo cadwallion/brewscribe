@@ -61,5 +61,13 @@ module Brewscribe
       self.carb = Carbonation.from_data self.carb
       self.style = Style.from_data self.style
     end
+
+    def abv
+      (((1.05 * (self.og_measured - self.fg_measured)) / self.fg_measured) / 0.79 * 100).round(2)
+    end
+
+    def abw
+      abv * 0.79336
+    end
   end
 end
