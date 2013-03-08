@@ -1,3 +1,10 @@
+## 0.3.0, released 2013-03-08
+
+* Added ABV/ABW calculation methods to Brewscribe::Recipe
+* Added SRM calculation method to Brewscribe::Recipe
+* Added IBU calculation method to Brewscribe::Recipe
+* Fixed typo
+
 ## 0.2.0, released 2012-04-13
 
 * Added Brewscribe::Mash
