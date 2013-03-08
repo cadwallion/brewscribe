@@ -73,4 +73,5 @@ describe Brewscribe::Recipe do
   end
 
   its(:ibu) { should == 65.1 }
+  its(:srm) { should == 30.6 }
 end

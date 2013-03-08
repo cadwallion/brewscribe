@@ -69,5 +69,15 @@ module Brewscribe
 
       (ibus * 1000).round(1)
     end
+
+    def srm
+      volume_in_gallons = volume_measured / 128.0
+      mcu = ingredients.grains.inject(0.0) do |sum, grain|
+        grain_in_pounds = grain.amount / 16.0
+        sum + ((grain.color * grain_in_pounds) / volume_in_gallons)
+      end
+
+      (1.4922 * (mcu ** 0.6859)).round(1)
+    end
   end
 end
