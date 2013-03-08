@@ -72,6 +72,12 @@ describe Brewscribe::Recipe do
     [true, false].should include subject.stir_plate
   end
 
+  context 'calculation methods' do
+    its(:og_measured) { should == 1.046 }
+    its(:fg_measured) { should == 1.010 }
+    its(:abv) { should == 4.74 }
+  end
+
   its(:ibu) { should == 65.1 }
   its(:srm) { should == 30.6 }
 end
