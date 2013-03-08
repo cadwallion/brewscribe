@@ -71,4 +71,6 @@ describe Brewscribe::Recipe do
   it 'should set stir_plate to boolean' do
     [true, false].should include subject.stir_plate
   end
+
+  its(:ibu) { should == 65.1 }
 end

@@ -61,5 +61,13 @@ module Brewscribe
       self.carb = Carbonation.from_data self.carb
       self.style = Style.from_data self.style
     end
+
+    def ibu
+      ibus  = self.ingredients.hops.inject(0) do |sum, hop|
+        sum + hop.ibu_contrib
+      end
+
+      (ibus * 1000).round(1)
+    end
   end
 end
