@@ -17,7 +17,8 @@ module Brewscribe
     end
 
     def parse_data
-      @xml = Nokogiri::XML(@raw_data).xpath('/Selections/Data') 
+      @raw_data = HTMLEntities.new.decode(@raw_data)
+      @xml = Nokogiri::XML(@raw_data, nil, 'UTF-8').xpath('/Selections/Data') 
       @hash = xml_node_to_hash @xml.first
 
       if @hash[:recipe].class == Hash
