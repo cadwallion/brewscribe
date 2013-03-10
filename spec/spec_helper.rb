@@ -16,3 +16,13 @@ RSpec::Matchers.define :be_boolean do
     "expected #{actual} to be true or false"
   end
 end
+
+RSpec::Matchers.define :be_one_of do |expected|
+  match do |actual|
+    expected.include? actual
+  end
+
+  failure_message_for_should do |actual|
+    "expected #{actual.class.name} to be in #{expected}"
+  end
+end
