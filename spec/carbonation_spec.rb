@@ -1,18 +1,17 @@
 require 'spec_helper'
 
 describe Brewscribe::Carbonation do
-  subject { Brewscribe::Carbonation.from_data RECIPE_HASH[:carb] }
+  let(:document) { import_document }
+  let(:recipe) { document.recipes.first }
+  let(:carbonation) { recipe.carbonation }
+  subject { carbonation }
 
   describe '#from_data' do
-    it { subject.should be_a Brewscribe::Carbonation }
+    it { should be_a Brewscribe::Carbonation }
 
-    it { subject.carb_rate.should be_a Float }
-    it { subject.temperature.should be_a Float }
-    it { subject.last_modified.should be_a Date }
-
-
-    it 'should set the type to one of the TYPES' do
-      Brewscribe::Carbonation::TYPES.should include subject.type
-    end
+    its(:carb_rate) { should be_a Float }
+    its(:temperature) { should be_a Float }
+    its(:last_modified) { should be_a Date }
+    its(:type) { should be_one_of Brewscribe::Carbonation::TYPES }
   end
 end
