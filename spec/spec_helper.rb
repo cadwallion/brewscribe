@@ -1,7 +1,6 @@
 $: << '../lib'
 
 require 'brewscribe'
-require './spec/support/recipe_hash'
 require 'pry'
 
 def import_document
