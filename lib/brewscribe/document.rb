@@ -1,3 +1,4 @@
+require 'htmlentities'
 module Brewscribe
   class Document
     attr_reader :raw_data, :hash
