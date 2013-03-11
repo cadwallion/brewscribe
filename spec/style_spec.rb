@@ -2,7 +2,6 @@
 require 'spec_helper'
 
 describe Brewscribe::Style do
-<<<<<<< HEAD
   subject { Brewscribe::Style.from_data RECIPE_HASH[:style] } 
   it {subject.name.should == 'Oktoberfest/Märzen'}
   it { subject.should be_a Brewscribe::Style }
@@ -19,7 +18,6 @@ describe Brewscribe::Style do
   it { subject.max_color.should be_a Float }
   it { subject.number.should be_a Fixnum }
   it { subject.letter.should == 'F' }
-=======
   let(:document) { import_document }
   let(:recipe) { document.recipes.first }
   subject { recipe.style } 
@@ -38,7 +36,6 @@ describe Brewscribe::Style do
   its(:max_color) { should be_a Float }
   its(:number) { should be_a Fixnum }
   its(:letter) { should == 'F' }
->>>>>>> upstream/master
 
   its(:examples) { should be_a Array }
   its(:examples) { should have(17).examples }
