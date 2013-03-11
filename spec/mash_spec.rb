@@ -2,52 +2,38 @@ require 'spec_helper'
 
 describe Brewscribe::Mash do
   describe '#from_data' do
-    let(:data) { RECIPE_HASH[:mash] }
-    subject { Brewscribe::Mash.from_data(data) }
+    let(:document) { import_document }
+    let(:recipe) { document.recipes.first }
+    let(:mash) { recipe.mash }
+    subject { mash }
 
-    it 'returns a Mash object with data preloaded' do
-      subject.should be_a Brewscribe::Mash 
-      subject.name.should == RECIPE_HASH[:mash][:name]
-    end
+    it { should be_a Brewscribe::Mash }
+    its(:name) { should == 'Single Infusion, Light Body, No Mash Out' }
+    its(:steps) { should be_a Array }
 
     it 'converts steps into an array of Mash::Step objects' do
-      subject.steps.should be_a Array
-      subject.steps[0].should be_a Brewscribe::Mash::Step
+      mash.steps[0].should be_a Brewscribe::Mash::Step
     end
 
-    it { subject.grain_weight.should be_a Float }
-    it { subject.grain_temp.should be_a Float }
-    it { subject.boil_temp.should be_a Float }
-    it { subject.tun_temp.should be_a Float }
-    it { subject.sparge_temp.should be_a Float }
-    it { subject.ph.should be_a Float }
-    it { subject.batch.should be_a Float }
-    it { subject.batch_pct.should be_a Float }
-    it { subject.tun_deadspace.should be_a Float }
-    it { subject.biab_vol.should be_a Float }
-    it { subject.tun_vol.should be_a Float }
-    it { subject.tun_mass.should be_a Float }
-    it { subject.tun_hc.should be_a Float }
-    it { subject.last_modified.should be_a Date }
+    its(:grain_weight) { should be_a Float }
+    its(:grain_temp) { should be_a Float }
+    its(:boil_temp) { should be_a Float }
+    its(:tun_temp) { should be_a Float }
+    its(:sparge_temp) { should be_a Float }
+    its(:ph) { should be_a Float }
+    its(:batch) { should be_a Float }
+    its(:batch_pct) { should be_a Float }
+    its(:tun_deadspace) { should be_a Float }
+    its(:biab_vol) { should be_a Float }
+    its(:tun_vol) { should be_a Float }
+    its(:tun_mass) { should be_a Float }
+    its(:tun_hc) { should be_a Float }
+    its(:last_modified) { should be_a Date }
 
-    it 'batch_even should be a boolean' do
-      [true, false].should include subject.batch_even
-    end
-
-    it 'batch_drain should be a boolean' do
-      [true, false].should include subject.batch_drain
-    end
-
-    it 'mash_39 should be a boolean' do
-      [true, false].should include subject.mash_39
-    end
-
-    it 'biab should be a boolean' do
-      [true, false].should include subject.biab
-    end
-
-    it 'equip_adjust should be a boolean' do
-      [true, false].should include subject.equip_adjust
-    end
+    its(:batch_even) { should be_boolean }
+    its(:batch_drain) { should be_boolean }
+    its(:mash_39) { should be_boolean }
+    its(:biab) { should be_boolean }
+    its(:equip_adjust) { should be_boolean }
   end
 end
