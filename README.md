@@ -39,9 +39,7 @@ I <3 Contributions.
 
 ## TODO
 
-* More detailed Brewscribe::Recipe parsing. Mash info especially
-* Beersmith Style parsing
-* Writing back to .bsmx
+* Document / Recipe Export
 * More documentation
 
 ## Author
