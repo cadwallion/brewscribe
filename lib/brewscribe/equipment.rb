@@ -28,7 +28,7 @@ module Brewscribe
       batch_vol: FLOAT_CONV,
       fermenter_loss: FLOAT_CONV,
       top_up: FLOAT_CONV,
-      efficiency: PERCENT_CONV,
+      efficiency: ->(k) { k.to_f * 0.01 },
       hop_util: PERCENT_CONV
     }
 

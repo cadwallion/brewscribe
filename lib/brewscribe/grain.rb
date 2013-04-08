@@ -14,7 +14,7 @@ module Brewscribe
     KEY_CONVERSION = {
       amount: FLOAT_CONV,
       color: FLOAT_CONV,
-      yield: PERCENT_CONV,
+      yield: ->(k) { k.to_f * 0.01 },
       price: FLOAT_CONV,
       boil_time: ->(k) { k.to_i },
       percent: PERCENT_CONV,
@@ -35,6 +35,18 @@ module Brewscribe
       @original_data = grain_data 
 
       data_to_properties grain_data
+    end
+
+    def ppg
+      self.yield * 46.214
+    end
+
+    def total_ppg
+      ppg * in_pounds
+    end
+
+    def in_pounds
+      self.amount / 16.0
     end
   end
 end

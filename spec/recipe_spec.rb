@@ -3,7 +3,8 @@ require 'spec_helper'
 describe Brewscribe::Recipe do
   let(:recipe_file) { File.read(File.dirname(__FILE__) + '/support/recipe.bsmx') }
   let(:data) { Brewscribe::Document.new(data: recipe_file).hash[:recipe] }
-  subject { Brewscribe::Recipe.new(data) }
+  let(:recipe) { Brewscribe::Recipe.new(data) }
+  subject { recipe }
   it 'should convert the recipe data into properties' do
     subject.brewer.should == 'CadBrew'
   end
@@ -80,4 +81,6 @@ describe Brewscribe::Recipe do
 
   its(:ibu) { should == 65.1 }
   its(:srm) { should == 30.6 }
+
+  its(:original_gravity) { should == 1.084 }
 end

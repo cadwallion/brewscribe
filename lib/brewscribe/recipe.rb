@@ -87,5 +87,20 @@ module Brewscribe
 
       (1.4922 * (mcu ** 0.6859)).round(1)
     end
+
+    def original_gravity
+      #binding.pry
+      1 + ((total_ppg / volume_in_gallons) * 0.001).round(3)
+    end
+
+    def total_ppg
+      ingredients.grains.inject(0.0) do |sum, grain|
+        sum + (grain.total_ppg * equipment.efficiency)
+      end
+    end
+
+    def volume_in_gallons
+      equipment.batch_vol / 128.0
+    end
   end
 end
